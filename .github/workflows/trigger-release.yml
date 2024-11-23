@@ -29,13 +29,6 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: main
-      
-      - uses: rickstaa/action-create-tag@v1
-        id: "tag_create"
-        with:
-            tag: ${{ steps.semver.outputs.next }}
-            tag_exists_error: false
-      
       - name: Update CHANGELOG
         id: changelog
         uses: requarks/changelog-action@v1
@@ -45,7 +38,6 @@ jobs:
             toTag: ${{ steps.semver.outputs.next }}
 
             writeToFile: false
-      
       - name: Create Release
         uses: ncipollo/release-action@v1.4.0
         with:
