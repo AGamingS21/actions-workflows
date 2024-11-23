@@ -28,7 +28,12 @@ jobs:
         uses: ietf-tools/semver-action@v1.8.0
         with:
           token: ${{ github.token }}
-          branch: main
+          branch: 
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+            tag: ${{ steps.semver.outputs.next }}
+            tag_exists_error: false
       - name: Update CHANGELOG
         id: changelog
         uses: requarks/changelog-action@v1
