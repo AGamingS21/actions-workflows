@@ -3,4 +3,4 @@ This repo will be used to test out different github actions. This way I am not d
 Fixed that just testing out other parameters
 
 
-Will try name with squash
+Test
