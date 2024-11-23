@@ -29,7 +29,20 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: main
-      - name: Update CHANGELOG
+      
+      - name: Create Release
+        uses: ncipollo/release-action@v1.4.0
+        with:
+          allowUpdates: true
+          draft: false
+          #makeLatest: true
+          commit: main
+          name: ${{ steps.semver.outputs.next }}
+          tag: ${{ steps.semver.outputs.next }}
+          body: "Release Changes"
+          token: ${{ github.token }}
+
+      - name: Create CHANGELOG
         id: changelog
         uses: requarks/changelog-action@v1
         with:
@@ -41,11 +54,11 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1.4.0
         with:
-          allowUpdates: true
-          draft: false
-          #makeLatest: true
-          commit: main
-          name: ${{ steps.semver.outputs.next }}
-          tag: ${{ steps.semver.outputs.next }}
-          body: ${{ steps.changelog.outputs.changes }}
-          token: ${{ github.token }}
+            allowUpdates: true
+            draft: false
+            #makeLatest: true
+            commit: main
+            name: ${{ steps.semver.outputs.next }}
+            tag: ${{ steps.semver.outputs.next }}
+            body: ${{ steps.changelog.outputs.changes }}
+            token: ${{ github.token }}
