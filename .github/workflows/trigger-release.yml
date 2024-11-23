@@ -37,7 +37,7 @@ jobs:
           allowUpdates: true
           draft: false
           #makeLatest: true
-          commit: true
+          commit: main
           name: ${{ steps.semver.outputs.next }}
           tag: ${{ steps.semver.outputs.next }}
           body: Changelog Contents
