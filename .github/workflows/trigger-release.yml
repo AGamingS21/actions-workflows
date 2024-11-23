@@ -50,7 +50,8 @@ jobs:
             tag: ${{ steps.semver.outputs.next }}
 
             writeToFile: false
-      - name: Create Release
+      
+      - name: Update Release
         uses: ncipollo/release-action@v1.4.0
         with:
             allowUpdates: true
