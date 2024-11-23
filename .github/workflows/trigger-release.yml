@@ -46,5 +46,5 @@ jobs:
           commit: main
           name: ${{ steps.semver.outputs.next }}
           tag: ${{ steps.semver.outputs.next }}
-          body: Changelog Contents
+          body: ${{ steps.changelog.outputs.changes }}
           token: ${{ github.token }}
